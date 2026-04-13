@@ -1,146 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <meta name="description" content="Universitas Ma Chung - Mulai Langkah Masa Depanmu" />
-    <title>Universitas Ma Chung</title>
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="desktop">
-      <!-- Navigation Header -->
-      <header class="div-wrapper">
-        <nav class="navigation" aria-label="Main navigation">
-          <img class="desain-tanpa-judul" src="img/desain-tanpa-judul-1.png" alt="Universitas Ma Chung Logo" />
-          <div class="area" aria-hidden="true"></div>
-          <a
-            href="https://www.figma.com/sites"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Apply Now - opens in a new tab"
-          >
-            <div class="button-linkout">
-              <span class="text">Apply Now</span>
-              <div class="arrow" aria-hidden="true">
-                <img class="image" src="img/image-2.svg" alt="" />
-              </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admission - Ma Chung</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><img src="img/desain-tanpa-judul-1.png" height="50"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="curiculum.html">Curriculum</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admission.html">Admission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                </ul>
+                <a href="#" class="btn btn-apply">Apply Now</a>
             </div>
-          </a>
-        </nav>
-      </header>
-      <!-- Hero / CTA Section -->
-      <section class="div-wrapper">
-        <div class="centered-CTA">
-          <h1 class="text-wrapper">Mulai Langkah Masa Depanmu</h1>
-          <p class="bergabunglah-dengan">
-            Bergabunglah dengan komunitas akademik yang mengutamakan<br />nilai moral dan keunggulan intelektual di
-            Universitas Ma Chung.
-          </p>
-          <a
-            href="https://www.figma.com/sites"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Daftar Sekarang - opens in a new tab"
-          >
-            <div class="div">
-              <span class="text-2">Daftar Sekarang</span>
-              <div class="arrow" aria-hidden="true">
-                <img class="image" src="img/image.svg" alt="" />
-              </div>
-            </div>
-          </a>
         </div>
-      </section>
-      <!-- Footer -->
-      <footer class="footer" aria-label="Site footer">
-        <!-- GET IN TOUCH -->
-        <div class="text-link-list">
-          <div class="title">
-            <div class="text-strong">
-              <div class="text-strong-2">GET IN TOUCH</div>
-            </div>
-          </div>
-          <div class="slot">
-            <div class="text-link-list-item">
-              <address class="list-item">
-                <span class="span">T (0341) 550 171 Email: </span>
-                <a href="mailto:info@machung.ac.id" target="_blank" rel="noopener noreferrer">
-                  <span class="text-wrapper-2">info@machung.ac.id<br /></span>
-                </a>
-                <span class="span"
-                  >Universitas Ma Chung Villa Puncak Tidar N-01, 65151, Malang, <br />Jawa Timur, Indonesia</span
-                >
-              </address>
-            </div>
-          </div>
+    </nav>
+    <main class="d-flex align-items-center justify-content-center text-center py-5" style="height: 80vh;">
+        <div class="container">
+            <h1 class="display-3 fw-bold text-danger">Mulai Langkah Masa Depanmu</h1>
+            <p class="lead mb-5">Bergabunglah dengan Universitas Ma Chung.</p>
+            <a href="#" class="btn btn-apply btn-lg">Daftar Sekarang</a>
         </div>
-        <!-- About Ma Chung Links -->
-        <nav class="text-link-list-2" aria-label="About Ma Chung navigation">
-          <div class="text-strong-wrapper">
-            <div class="text-strong">
-              <div class="text-strong-2">About Ma Chung</div>
-            </div>
-          </div>
-          <ul class="slot-2">
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/tentang-sejarah" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Sejarah</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/visi-misi-nilai-ma-chung/" target="_blank" rel="noopener noreferrer">
-                <p class="list-item-2">Visi, Misi, dan 12 Nilai Ma Chung</p>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/susunan-yayasan/" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Pengurus Yayasan</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/pimpinan-ma-chung/" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Pimpinan</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/tentang-pendiri" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Pendiri</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/welcome-to-ma-chung/" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Sambutan Yayasan</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a
-                href="https://machung.ac.id/struktur-organisasi-universitas-ma-chung/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="list-item-2">Struktur Organisasi</div>
-              </a>
-            </li>
-            <li class="text-link-list-item">
-              <a href="https://machung.ac.id/keunggulan-ma-chung/" target="_blank" rel="noopener noreferrer">
-                <div class="list-item-2">Keunggulan</div>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <img class="img" src="img/title.svg" alt="Universitas Ma Chung" />
-      </footer>
-      <!-- Fixed Navbar -->
-      <nav class="navbar" aria-label="Primary navigation">
-        <a href="#" class="text-wrapper-3">Home</a>
-        <a href="#" class="text-wrapper-3">Faculty</a>
-        <a href="#" class="text-wrapper-3">Curiculum &amp; Academic</a>
-        <a href="#" class="text-wrapper-3">Admission</a>
-        <a href="#" class="text-wrapper-3">About</a>
-      </nav>
-    </div>
-  </body>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
