@@ -34,7 +34,7 @@ h1, h2, h3, .serif {
 
 .btn-apply {
     background-color: var(--machung-red);
-    color: pink;
+    color: white;
     border-radius: 100px;
     padding: 10px 25px;
     font-weight: bold;
