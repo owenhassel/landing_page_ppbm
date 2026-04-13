@@ -1,0 +1,45 @@
+/* Custom Styles overriding or supplementing Bootstrap */
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: #333;
+}
+
+h1, h2, h3, .navbar-brand {
+    font-family: 'Crimson Text', serif;
+}
+
+.text-danger {
+    color: #b71c1c !important; /* Warna khas Ma Chung */
+}
+
+.bg-danger {
+    background-color: #b71c1c !important;
+}
+
+.btn-danger {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link.active {
+    color: #b71c1c !important;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+footer a:hover {
+    color: #b71c1c !important;
+}
