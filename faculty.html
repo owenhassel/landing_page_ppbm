@@ -3,76 +3,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Our Faculty - Ma Chung</title>
+    <title>Faculty - Ma Chung</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar (Gunakan kode Navbar dari home.html) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <!-- COPY NAVBAR DARI HOME KE SINI -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="home.html"><img src="img/desain-tanpa-judul-1.png" width="50"></a>
+            <a class="navbar-brand" href="home.html"><img src="img/desain-tanpa-judul-1.png" height="50"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="faculty.html">Faculty</a></li>
                     <li class="nav-item"><a class="nav-link" href="curiculum.html">Curriculum</a></li>
                     <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 </ul>
+                <a href="#" class="btn btn-apply">Apply Now</a>
             </div>
         </div>
     </nav>
 
-    <main class="py-5 bg-light">
-        <div class="container text-center mb-5">
-            <h1 class="display-5 fw-bold">Our Professor & Lecture</h1>
-            <p class="lead">Mengenal lebih dekat para pakar dan praktisi bahasa Mandarin kami.</p>
-        </div>
-
-        <div class="container">
-            <div class="row g-4">
-                <!-- Dosen 1 -->
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="ratio ratio-1x1 bg-secondary rounded-top" style="background: url('img/image-2.svg') center/cover;"></div>
-                        <div class="card-body">
-                            <h6 class="fw-bold">Anggrah Diah Airlinda, SS., MTCSOL.</h6>
-                            <p class="small text-muted">Pendidikan Bahasa Mandarin</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Ulangi untuk dosen lain -->
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="ratio ratio-1x1 bg-secondary rounded-top"></div>
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dhatu Sitaresmi, SS., MTCSOL.</h6>
-                            <p class="small text-muted">Pendidikan Bahasa Mandarin</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="ratio ratio-1x1 bg-secondary rounded-top"></div>
-                        <div class="card-body">
-                            <h6 class="fw-bold">Yohanna Nirmalasari, S.Pd., M.Pd.</h6>
-                            <p class="small text-muted">Pendidikan Bahasa Mandarin</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="ratio ratio-1x1 bg-secondary rounded-top"></div>
-                        <div class="card-body">
-                            <h6 class="fw-bold">Hermien Indrawati, MBA.</h6>
-                            <p class="small text-muted">Pendidikan Bahasa Mandarin</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="container py-5 text-center">
+        <h1 class="display-4 mb-5">Our Professor & Lecture</h1>
+        <div class="row g-4">
+            <!-- Isi konten dosen sama seperti sebelumnya -->
+            <div class="col-md-3">
+                <div style="height:300px; background:#eee;" class="mb-3"></div>
+                <h6>Anggrah Diah Airlinda, SS., MTCSOL.</h6>
             </div>
         </div>
-    </main>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

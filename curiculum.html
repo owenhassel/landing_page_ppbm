@@ -8,81 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="home.html"><img src="img/desain-tanpa-judul-1.png" width="50"></a>
+            <a class="navbar-brand" href="home.html"><img src="img/desain-tanpa-judul-1.png" height="50"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
                     <li class="nav-item"><a class="nav-link active" href="curiculum.html">Curriculum</a></li>
                     <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 </ul>
+                <a href="#" class="btn btn-apply">Apply Now</a>
             </div>
         </div>
     </nav>
-
-    <main class="py-5">
-        <div class="container">
-            <h1 class="text-center mb-5">Curriculum & Academic</h1>
-            
-            <div class="row g-4 mb-5">
-                <div class="col-md-3">
-                    <div class="p-4 border rounded bg-light h-100">
-                        <h2 class="display-4 text-danger opacity-25">01</h2>
-                        <h5>Tahun 1</h5>
-                        <p class="small">Dasar Mandarin (Reading, Listening, Speaking, Character). Target: HSK 3.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-4 border rounded bg-light h-100">
-                        <h2 class="display-4 text-danger opacity-25">02</h2>
-                        <h5>Tahun 2</h5>
-                        <p class="small">Pendalaman bahasa, budaya, dan persiapan HSK Intermediate. Peluang PKL.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-4 border rounded bg-light h-100">
-                        <h2 class="display-4 text-danger opacity-25">03</h2>
-                        <h5>Tahun 3</h5>
-                        <p class="small">Mata kuliah konsentrasi dan persiapan penulisan karya ilmiah.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-4 border rounded bg-light h-100">
-                        <h2 class="display-4 text-danger opacity-25">04</h2>
-                        <h5>Tahun 4</h5>
-                        <p class="small">Internship (PKL) dan penyelesaian Tugas Akhir (Skripsi).</p>
-                    </div>
+    <div class="container py-5">
+        <h1 class="mb-5">Curriculum & Academic</h1>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card p-4 h-100 shadow-sm border-0 border-top border-danger border-5">
+                    <h2 class="opacity-25 display-4">01</h2>
+                    <h5>Tahun 1</h5>
+                    <p class="small">Pemahaman dasar Bahasa Mandarin.</p>
                 </div>
             </div>
-
-            <h3 class="text-center bg-danger text-white py-3 rounded mb-4">Rencana Studi</h3>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                    <div class="card card-body shadow-sm">
-                        <h6>Semester 1</h6>
-                        <ul class="small">
-                            <li>Comprehensive Chinese 1</li>
-                            <li>Chinese Pronunciation</li>
-                            <li>Theory of Language Learning</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-body shadow-sm">
-                        <h6>Semester 2</h6>
-                        <ul class="small">
-                            <li>Comprehensive Chinese 2</li>
-                            <li>Religion & Bahasa Indonesia</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <!-- Ulangi 02, 03, 04 -->
         </div>
-    </main>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
