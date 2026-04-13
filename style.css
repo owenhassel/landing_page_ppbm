@@ -34,8 +34,8 @@ h1, h2, h3, .serif {
 
 .btn-apply {
     background-color: var(--machung-red);
-    color: white;
-    border-radius: 0;
+    color: pink;
+    border-radius: 100px;
     padding: 10px 25px;
     font-weight: bold;
     text-transform: uppercase;
@@ -227,12 +227,3 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
     line-height: 2;
 }
 
-/* Button Apply Now Consistent */
-.btn-apply {
-    background-color: var(--machung-red);
-    color: white !important;
-    border-radius: 50px;
-    padding: 10px 25px;
-    font-weight: bold;
-    font-size: 14px;
-}
