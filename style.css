@@ -42,7 +42,7 @@ h1, h2, h3, .serif {
 }
 
 .hero-bg {
-    height: 70vh;
+    height: 83vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -218,4 +218,3 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
     text-align: center;
     line-height: 2;
 }
-
