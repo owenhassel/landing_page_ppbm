@@ -219,13 +219,3 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
     text-align: center;
     line-height: 2;
 }
-
-.main-footer {
-    background-color: #f8f9fa;
-}
-
-.main-footer .border-top {
-    border-color: #ddd !important;
-    font-size: 14px;
-    color: #666;
-}
