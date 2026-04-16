@@ -3,6 +3,7 @@
 :root {
     --machung-red: #b71c1c;
     --machung-dark: #1a1a1a;
+    --machung-white: #ffffff;
 }
 
 body {
@@ -82,6 +83,10 @@ h1, h2, h3, .serif {
     height: 300px;
     object-fit: cover;
     background-color: #ddd;
+}
+
+.list-emoji {
+    list-style-type: "➜ ";
 }
 
 footer {
@@ -167,6 +172,17 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
 .card-curriculum {
     background-color: var(--machung-red);
     color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-about {
+    background-color: var(--machung-white);
+    color: black;
     border: none;
     border-radius: 12px;
     padding: 30px 20px;
