@@ -453,3 +453,130 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
     color: #fff !important;
     padding-left: 5px;
 }
+
+.semester-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    transition: all 0.3s ease;
+    border-top: 5px solid #dc3545; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.semester-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.semester-card .card-title {
+    color: #dc3545;
+    font-weight: 700;
+    font-family: 'serif';
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.course-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #dee2e6;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: flex-start;
+}
+
+.course-list li:last-child {
+    border-bottom: none;
+}
+
+.course-list li::before {
+    content: "\F2E5"; 
+    font-family: "bootstrap-icons";
+    color: #dc3545;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.special-course {
+    background-color: #fff5f5;
+    padding: 15px !important;
+    border-radius: 10px;
+    border: 1px dashed #dc3545 !important;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: #dc3545 !important;
+}
+
+.special-course::before {
+    content: "\F13E" !important; 
+}
+
+.milestone-card {
+    background: linear-gradient(145deg, #ffffff, #fdf2f2);
+    border: 1px solid #f5c2c7 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.milestone-card::after {
+    content: "\F479"; 
+    font-family: "bootstrap-icons";
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    font-size: 5rem;
+    color: rgba(220, 53, 69, 0.05);
+    transform: rotate(-15deg);
+}
+
+.semester-7::after { content: "\F193"; } 
+.semester-8::after { content: "\F4DA"; } 
+
+.milestone-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 15px;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+    border-left: 5px solid #dc3545;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.milestone-box i {
+    font-size: 2rem;
+    color: #dc3545;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.milestone-box h5 {
+    color: #b02a37;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.milestone-box span {
+    font-size: 0.85rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.milestone-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 20px;
+    line-height: 1.6;
+    font-style: italic;
+}
