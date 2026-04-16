@@ -31,7 +31,7 @@ h1, h2, h3, .serif {
     color: var(--machung-red) !important;
 }
 
-.btn-apply {
+.btn-apply, .btn-submit {
     background-color: var(--machung-red);
     color: white;
     border-radius: 100px;
