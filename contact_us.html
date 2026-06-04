@@ -75,27 +75,27 @@
                 <div class="p-4 border bg-white card-custom shadow-sm rounded">
                     <h2 class="text-danger fw-bold text-center mb-2">Send us a Message</h2>
                     <p class="text-center mb-4 text-secondary">Have questions or feedback?<br>Reach out to us using the form below!</p>
-                    <form>
+                    <form action="proses_form.php" method="POST">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Your Name">
+                            <input type="text" class="form-control" id="floatingInput" name="full_name" placeholder="Your Name" required>
                             <label for="floatingInput">Full Name</label>
                         </div>
                         <div class="row g-2">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                                    <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com" required>
                                     <label for="floatingEmail">Email address</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="floatingSubject" placeholder="Phone Number">
+                                    <input type="number" class="form-control" id="floatingSubject" name="phone" placeholder="Phone Number" required>
                                     <label for="floatingSubject">Phone Number</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingMessage" style="height: 120px"></textarea>
+                            <textarea class="form-control" name="message" placeholder="Leave a comment here" id="floatingMessage" style="height: 120px" required></textarea>
                             <label for="floatingMessage">Your Message</label>
                         </div>
                         <div class="d-grid">
