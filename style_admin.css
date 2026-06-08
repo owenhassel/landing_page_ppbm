@@ -450,11 +450,38 @@ textarea.fi { resize: vertical; }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── RESPONSIVE ─────────────────────────────── */
+/* ─── RESPONSIVE & MOBILE SETTINGS ─────────────────────────────── */
 @media (max-width: 768px) {
-    .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
-    .sidebar.open { transform: translateX(0); }
-    .main { margin-left: 0; padding: 16px; }
-    .stats { grid-template-columns: repeat(2,1fr); gap: 12px; }
-    .grid2 { grid-template-columns: 1fr; }
+    /* Mengatur sidebar slide-in dengan tampilan 100% persis desktop */
+    .sidebar { 
+        left: calc(var(--sidebar-w) * -1); /* Disembunyikan di luar layar */
+        transition: left 0.3s ease-in-out;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+        z-index: 9999 !important; /* Memastikan selalu di posisi teratas */
+        width: var(--sidebar-w) !important;
+        background: var(--sidebar) !important;
+    }
+    
+    /* Class yang dipanggil oleh JavaScript saat tombol hamburger diklik */
+    .sidebar.show-sidebar { 
+        left: 0; 
+    }
+    
+    /* Atur ulang ukuran konten utama agar tidak memotong layar */
+    .main { 
+        margin-left: 0 !important; 
+        padding: 16px; 
+        width: 100%;
+    }
+    
+    /* Ubah grid statistik menjadi 2 kolom di HP */
+    .stats { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; 
+    }
+    
+    /* Ubah form input (modal) menjadi 1 kolom memanjang ke bawah */
+    .grid2 { 
+        grid-template-columns: 1fr; 
+    }
 }

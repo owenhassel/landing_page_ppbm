@@ -65,9 +65,15 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 
 <main class="main">
     <div class="topbar">
-        <div>
-            <div class="tb-title">Dashboard Overview</div>
-            <div class="tb-sub">Sistem Informasi Program Studi Bahasa Mandarin — Ma Chung</div>
+        <div class="d-flex align-items-center">
+            <button class="btn d-md-none me-3" id="sidebarToggle" style="border:none; padding:0; background:transparent; outline:none;">
+                <i class="bi bi-list" style="font-size: 1.8rem; color: var(--red);"></i>
+            </button>
+            
+            <div>
+                <div class="tb-title">Dashboard Overview</div> <!-- Sesuaikan judul per halaman -->
+                <div class="tb-sub">Sistem Informasi Program Studi Bahasa Mandarin — Ma Chung</div>
+            </div>
         </div>
     </div>
 
@@ -188,5 +194,28 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    if (sidebarToggle && sidebar) {
+        // Ketika tombol hamburger diklik
+        sidebarToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Mencegah efek klik bocor ke belakang
+            sidebar.classList.toggle('show-sidebar');
+        });
+
+        // Fitur Tambahan: Tutup sidebar secara otomatis jika user klik di luar sidebar (area konten)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) { // Hanya berlaku di HP
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show-sidebar');
+                }
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>
