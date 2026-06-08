@@ -46,7 +46,7 @@
 <div class="w3-card-4 w3-white w3-padding w3-margin-top"
     style="width:400px; margin:auto; border-radius:10px;">
 
-    <form method="post" action="">
+    <form method="post">
 
         <h2>Login Admin</h2>
         <p>Silakan masuk untuk mengakses Admin Panel PPBM.</p>
@@ -74,13 +74,12 @@
         <br>
 
         <input type="submit"
-            class="w3-button w3-green w3-margin-top"
+            class="w3-button w3-red w3-margin-top"
             value="Login">
 
     </form>
 
     <?php
-        // Menampilkan pesan error jika login gagal
         if (isset($error)) {
     ?>
     <div class="w3-panel w3-pale-red w3-leftbar w3-border-red w3-margin-top">

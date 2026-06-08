@@ -12,17 +12,17 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
                 <img src="Image/logo.png" alt="Logo" height="50">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about_us.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
-                    <li class="nav-item"><a class="nav-link" href="curiculum.html">Curriculum</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about_us.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.php">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="curiculum.php">Curriculum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact_us.php">Contact Us</a></li>
                 </ul>
                 <a href="https://tinyurl.com/tes-beasiswa-umc" class="btn btn-apply">Tes Beasiswa</a>
             </div>
