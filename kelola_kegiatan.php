@@ -31,10 +31,6 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 
     <nav class="sb-nav">
         <div class="nav-sect">Menu Utama</div>
-        <a href="admin.php" class="nav-lnk">
-            <i class="bi bi-grid-fill"></i> Dashboard
-        </a>
-        <div class="nav-sect">Manajemen Konten</div>
         <a href="admin.php#user" class="nav-lnk">
             <i class="bi bi-people-fill"></i> Kelola Admin
         </a>
@@ -68,22 +64,6 @@ $initials = strtoupper(substr($current_admin, 0, 2));
         <div>
             <div class="tb-title">Manajemen Kegiatan</div>
             <div class="tb-sub">Sistem Informasi Program Studi Bahasa Mandarin — Ma Chung</div>
-        </div>
-        <div class="tb-right">
-            <button class="tb-btn" title="Notifikasi"><i class="bi bi-bell"></i></button>
-            <div class="dropdown">
-                <a class="tb-profile dropdown-toggle" id="ddProfile" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="tb-avi"><?= htmlspecialchars($initials); ?></div>
-                    <span class="tb-uname"><?= htmlspecialchars($current_admin); ?></span>
-                    <i class="bi bi-chevron-down" style="font-size:10px;color:var(--t3);"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="ddProfile">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2 text-secondary"></i>Profil Saya</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2 text-secondary"></i>Pengaturan</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 
