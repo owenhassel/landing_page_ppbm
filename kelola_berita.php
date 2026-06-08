@@ -6,10 +6,6 @@ if (!isset($_SESSION["login"])) {
 }
 include 'db.php';
 $current_admin = $_SESSION["id_admin"];
-$count_admin    = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM users"))['total'];
-$count_berita   = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM berita"))['total'];
-$count_kegiatan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM kegiatan"))['total'];
-$count_form     = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM form"))['total'];
 $initials = strtoupper(substr($current_admin, 0, 2));
 ?>
 <!DOCTYPE html>
@@ -17,7 +13,7 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard — Ma Chung Mandarin</title>
+<title>Kelola Berita — Ma Chung Mandarin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,14 +31,14 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 
     <nav class="sb-nav">
         <div class="nav-sect">Menu Utama</div>
-        <a href="admin.php" class="nav-lnk active">
+        <a href="admin.php" class="nav-lnk">
             <i class="bi bi-grid-fill"></i> Dashboard
         </a>
         <div class="nav-sect">Manajemen Konten</div>
-        <a href="admin.php#user" class="nav-lnk active">
+        <a href="admin.php#user" class="nav-lnk">
             <i class="bi bi-people-fill"></i> Kelola Admin
         </a>
-        <a href="kelola_berita.php" class="nav-lnk">
+        <a href="kelola_berita.php" class="nav-lnk active">
             <i class="bi bi-newspaper"></i> Kelola Berita
         </a>
         <a href="kelola_kegiatan.php" class="nav-lnk">
@@ -70,7 +66,7 @@ $initials = strtoupper(substr($current_admin, 0, 2));
 <main class="main">
     <div class="topbar">
         <div>
-            <div class="tb-title">Dashboard Overview</div>
+            <div class="tb-title">Manajemen Berita</div>
             <div class="tb-sub">Sistem Informasi Program Studi Bahasa Mandarin — Ma Chung</div>
         </div>
         <div class="tb-right">
@@ -91,84 +87,53 @@ $initials = strtoupper(substr($current_admin, 0, 2));
         </div>
     </div>
 
-    <div class="stats" id="dashboard">
-        <div class="scard ac-red">
-            <div class="scard-top">
-                <span class="scard-badge bd-red">Admin</span>
-                <div class="scard-ico ic-red"><i class="bi bi-people-fill"></i></div>
-            </div>
-            <div class="scard-num"><?= $count_admin; ?></div>
-            <div class="scard-desc">Akun admin aktif terdaftar</div>
-        </div>
-        <div class="scard ac-slate">
-            <div class="scard-top">
-                <span class="scard-badge bd-slate">Berita</span>
-                <div class="scard-ico ic-slate"><i class="bi bi-newspaper"></i></div>
-            </div>
-            <div class="scard-num"><?= $count_berita; ?></div>
-            <div class="scard-desc">Artikel berita terpublish</div>
-        </div>
-        <div class="scard ac-amber">
-            <div class="scard-top">
-                <span class="scard-badge bd-amber">Kegiatan</span>
-                <div class="scard-ico ic-amber"><i class="bi bi-calendar-event"></i></div>
-            </div>
-            <div class="scard-num"><?= $count_kegiatan; ?></div>
-            <div class="scard-desc">Agenda kegiatan terdaftar</div>
-        </div>
-        <div class="scard ac-teal">
-            <div class="scard-top">
-                <span class="scard-badge bd-teal">Form</span>
-                <div class="scard-ico ic-teal"><i class="bi bi-envelope-open-fill"></i></div>
-            </div>
-            <div class="scard-num"><?= $count_form; ?></div>
-            <div class="scard-desc">Pesan masuk dari pengunjung</div>
-        </div>
-    </div>
-
-    <div class="sec" id="user">
+    <div class="sec" id="berita">
         <div class="sec-head">
             <div class="sec-ttl">
-                <div class="sec-ico ic-red"><i class="bi bi-people-fill"></i></div>
+                <div class="sec-ico ic-slate"><i class="bi bi-newspaper"></i></div>
                 <div>
-                    <h5>Kelola Akun Admin</h5>
-                    <small>Manajemen akses administrator sistem</small>
+                    <h5>Kelola Data Berita</h5>
+                    <small>Artikel dan konten berita program studi</small>
                 </div>
             </div>
-            <button class="btn-red" data-bs-toggle="modal" data-bs-target="#mAdmin">
-                <i class="bi bi-plus-lg"></i> Tambah Admin
+            <button class="btn-red" data-bs-toggle="modal" data-bs-target="#mBerita">
+                <i class="bi bi-plus-lg"></i> Tambah Berita
             </button>
         </div>
         <div style="overflow-x:auto;">
             <table class="dtbl">
                 <thead>
                     <tr>
-                        <th>Username / ID Admin</th>
-                        <th>Passcode</th>
-                        <th>Status</th>
+                        <th>ID</th>
+                        <th>Judul Berita</th>
+                        <th>Deskripsi</th>
+                        <th>Tanggal</th>
+                        <th>Penulis</th>
                         <th style="text-align:center;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                $q = mysqli_query($conn, "SELECT * FROM users");
+                $q = mysqli_query($conn, "SELECT * FROM berita ORDER BY date DESC");
                 if (mysqli_num_rows($q) > 0):
                     while ($r = mysqli_fetch_assoc($q)):
                 ?>
                     <tr>
+                        <td><span class="tid"><?= htmlspecialchars($r['id_berita']); ?></span></td>
                         <td>
-                            <div class="t-bold"><?= htmlspecialchars($r['id_admin']); ?></div>
-                            <div class="t-sub"><i class="bi bi-person"></i> Administrator</div>
+                            <div class="t-bold"><?= htmlspecialchars($r['judul']); ?></div>
+                            <div class="t-sub"><i class="bi bi-image" style="color:var(--red);"></i><?= htmlspecialchars($r['gambar']); ?></div>
                         </td>
-                        <td><span style="letter-spacing:3px;color:var(--t3);">••••••••</span></td>
-                        <td><span class="pill p-teal">● Aktif</span></td>
+                        <td><div class="t-clip"><?= htmlspecialchars($r['deskripsi']); ?></div></td>
+                        <td><div class="t-sub"><i class="bi bi-calendar3"></i><?= htmlspecialchars($r['date']); ?></div></td>
+                        <td><span class="pill p-slate"><?= htmlspecialchars($r['penulis']); ?></span></td>
                         <td class="t-acts">
                             <button class="iBtn iBtn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
                             <button class="iBtn iBtn-del"  title="Hapus"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 <?php endwhile; else: ?>
-                    <tr><td colspan="4" style="text-align:center;padding:40px;color:var(--t3);">Belum ada data admin</td></tr>
+                    <tr><td colspan="6" style="text-align:center;padding:40px;color:var(--t3);">Belum ada data berita</td></tr>
                 <?php endif; ?>
                 </tbody>
             </table>
@@ -176,31 +141,49 @@ $initials = strtoupper(substr($current_admin, 0, 2));
     </div>
 </main>
 
-<div class="modal fade" id="mAdmin" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="mBerita" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="m-hd">
                 <div class="m-hd-l">
-                    <div class="m-hd-ico ic-red"><i class="bi bi-person-plus-fill"></i></div>
-                    <h5>Tambah Admin Baru</h5>
+                    <div class="m-hd-ico ic-slate"><i class="bi bi-newspaper"></i></div>
+                    <h5>Tambah Berita Baru</h5>
                 </div>
                 <button class="m-close" data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
             </div>
-            <form action="proses_tambah_admin.php" method="POST">
+            <form action="proses_tambah_berita.php" method="POST" enctype="multipart/form-data">
                 <div class="m-body">
-                    <div class="fg">
-                        <label class="fl">Username / ID Admin</label>
-                        <input type="text" class="fi" name="id_admin" placeholder="Masukkan username admin" required>
+                    <div class="grid2">
+                        <div class="fg">
+                            <label class="fl">ID Berita</label>
+                            <input type="text" class="fi" name="id_berita" placeholder="Contoh: BRT-003" required>
+                        </div>
+                        <div class="fg">
+                            <label class="fl">Tanggal</label>
+                            <input type="date" class="fi" name="date" required>
+                        </div>
                     </div>
                     <div class="fg">
-                        <label class="fl">Password</label>
-                        <input type="password" class="fi" name="passcode" placeholder="Masukkan password" required>
-                        <div class="fh"><i class="bi bi-shield-lock"></i>Password dienkripsi sebelum disimpan.</div>
+                        <label class="fl">Judul Berita</label>
+                        <input type="text" class="fi" name="judul" placeholder="Masukkan judul berita" required>
+                    </div>
+                    <div class="fg">
+                        <label class="fl">Kategori / Penulis</label>
+                        <input type="text" class="fi" name="penulis" placeholder="Contoh: Humas, Kemahasiswaan" required>
+                    </div>
+                    <div class="fg">
+                        <label class="fl">Deskripsi</label>
+                        <textarea class="fi" name="deskripsi" rows="3" placeholder="Tuliskan deskripsi berita..." required></textarea>
+                    </div>
+                    <div class="fg">
+                        <label class="fl">Upload Gambar</label>
+                        <input type="file" class="fi" name="gambar" accept=".jpg,.jpeg,.png" required>
+                        <div class="fh"><i class="bi bi-image"></i>Format: JPG, JPEG, PNG</div>
                     </div>
                 </div>
                 <div class="m-foot">
                     <button type="button" class="btn-ghost" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" name="submit" class="btn-red">Simpan Admin</button>
+                    <button type="submit" name="submit" class="btn-red">Simpan Berita</button>
                 </div>
             </form>
         </div>
