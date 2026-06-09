@@ -114,8 +114,12 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                         <td><div class="t-sub"><i class="bi bi-calendar3"></i><?= htmlspecialchars($r['date']); ?></div></td>
                         <td><span class="pill p-slate"><?= htmlspecialchars($r['penulis']); ?></span></td>
                         <td class="t-acts">
-                            <button class="iBtn iBtn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="iBtn iBtn-del"  title="Hapus"><i class="bi bi-trash"></i></button>
+                            <a href="edit_berita.php?id_berita=<?= urlencode($r['id_berita']); ?>" class="iBtn iBtn-edit" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="remove_berita.php?id_berita=<?= urlencode($r['id_berita']); ?>" class="iBtn iBtn-del" title="Hapus" onclick="return confirm('Yakin ingin menghapus berita ini?');">
+                                <i class="bi bi-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 <?php endwhile; else: ?>

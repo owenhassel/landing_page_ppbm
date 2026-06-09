@@ -119,7 +119,9 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                             <?php endif; ?>
                         </td>
                         <td class="t-acts">
-                            <button class="iBtn iBtn-del" title="Hapus"><i class="bi bi-trash"></i></button>
+                            <a href="remove_form.php?id_form=<?= urlencode($r['id_form']); ?>" class="iBtn iBtn-del" title="Hapus" onclick="return confirm('Yakin ingin menghapus pesan form ini?');">
+                                <i class="bi bi-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 <?php endwhile; else: ?>

@@ -1,3 +1,7 @@
+<?php
+// Panggil koneksi database di baris paling atas
+include 'db.php'; 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -114,43 +118,65 @@
         </div>
 
         <div class="row g-4 mb-5">
+            <?php
+            // Mengambil 4 data kegiatan terbaru dari database
+            $q_kegiatan = mysqli_query($conn, "SELECT * FROM kegiatan ORDER BY waktu_kegiatan DESC LIMIT 4");
             
-            <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card bg-white">
-                    <img src="Image/Sinoculture_of_Imlek.jpeg" class="card-img-top w-100" style="height: 250px; object-fit: cover;">
-                    <div class="card-body text-center d-flex align-items-center justify-content-center p-4">
-                        <h6 class="card-title fw-bold text-dark mb-0">Sinoculture of Imlek</h6>
+            if (mysqli_num_rows($q_kegiatan) > 0) {
+                $delay = 100;
+                
+                while ($row = mysqli_fetch_assoc($q_kegiatan)) {
+                    
+                    // --- Mengonversi format tanggal menjadi format Indonesia ---
+                    $bulan_indo = array (
+                        1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                    );
+                    $pecahkan = explode('-', $row['waktu_kegiatan']);
+                    $tanggal_kegiatan = $pecahkan[2] . ' ' . $bulan_indo[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+            ?>
+                <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="<?= $delay; ?>">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card bg-white" 
+                         style="cursor: pointer;" 
+                         data-bs-toggle="modal" 
+                         data-bs-target="#modalPoster" 
+                         data-poster="Image/<?= htmlspecialchars($row['gambar']); ?>">
+                        
+                        <img src="Image/<?= htmlspecialchars($row['gambar']); ?>" class="card-img-top w-100" style="height: 250px; object-fit: cover;" alt="Kegiatan">
+                        
+                        <div class="card-body text-center d-flex align-items-center justify-content-center p-4">
+                            <h6 class="card-title fw-bold text-dark mb-0"><?= htmlspecialchars($row['judul']); ?></h6>
+                        </div>
+                        
+                        <p class="card-text text-muted" style="text-align: center; margin: 10px;">
+                            <b><?= $tanggal_kegiatan; ?></b>
+                        </p>
                     </div>
                 </div>
-            </div>
+            <?php
+                    $delay += 100;
+                }
+            } else {
+            ?>
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted" data-aos="fade-up">Belum ada data agenda & kegiatan saat ini.</p>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
 
-            <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card bg-white">
-                    <img src="Image/Chinese_Bridge.jpeg" class="card-img-top w-100" style="height: 250px; object-fit: cover;">
-                    <div class="card-body text-center d-flex align-items-center justify-content-center p-4">
-                        <h6 class="card-title fw-bold text-dark mb-0">Chinese Bridge Competition – Perguruan Tinggi</h6>
-                    </div>
+    <div class="modal fade" id="modalPoster" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-0 justify-content-end">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 10px; margin-bottom: 10px;"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" id="gambarLengkap" class="rounded shadow-lg" alt="Full Poster" style="max-height: 80vh; width: auto; max-width: 100%; object-fit: contain;">
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card bg-white">
-                    <img src="Image/Chinese_Bridge2.jpeg" class="card-img-top w-100" style="height: 250px; object-fit: cover;">
-                    <div class="card-body text-center d-flex align-items-center justify-content-center p-4">
-                        <h6 class="card-title fw-bold text-dark mb-0">Chinese Bridge Competition 2025 – SMA SMK se-Jawa Timur</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card bg-white">
-                    <img src="Image/forum_komunikasi.jpg" class="card-img-top w-100" style="height: 250px; object-fit: cover;" alt="Forum Komunikasi">
-                    <div class="card-body text-center d-flex align-items-center justify-content-center p-4">
-                        <h6 class="card-title fw-bold text-dark mb-0" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 3;">Forum Komunikasi Ilmiah: Perkaya Pengetahuan melalui Penelitian dan Pengabdian</h6>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -216,9 +242,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Inisialisasi animasi scroll
         AOS.init({
             once: true, 
             offset: 100
+        });
+
+        // Script dinamis untuk Modal Poster
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalPoster = document.getElementById('modalPoster');
+            if (modalPoster) {
+                modalPoster.addEventListener('show.bs.modal', function (event) {
+                    // Mendapatkan elemen card yang diklik
+                    const card = event.relatedTarget;
+                    // Mengambil src dari atribut data-poster
+                    const imgSrc = card.getAttribute('data-poster');
+                    // Memasukkan src tersebut ke elemen img di dalam modal
+                    const modalImg = modalPoster.querySelector('#gambarLengkap');
+                    modalImg.src = imgSrc;
+                });
+            }
         });
     </script>
 </body>

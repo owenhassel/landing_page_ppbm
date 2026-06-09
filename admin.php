@@ -149,8 +149,13 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                         <td><span style="letter-spacing:3px;color:var(--t3);">••••••••</span></td>
                         <td><span class="pill p-teal">● Aktif</span></td>
                         <td class="t-acts">
-                            <button class="iBtn iBtn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="iBtn iBtn-del"  title="Hapus"><i class="bi bi-trash"></i></button>
+                            <a href="edit_admin.php?id_admin=<?= urlencode($r['id_admin']); ?>" class="iBtn iBtn-edit" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            
+                            <a href="remove_admin.php?id_admin=<?= urlencode($r['id_admin']); ?>" class="iBtn iBtn-del" title="Hapus" onclick="return confirm('Yakin ingin menghapus admin ini?');">
+                                <i class="bi bi-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 <?php endwhile; else: ?>

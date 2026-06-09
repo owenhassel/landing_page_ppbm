@@ -25,13 +25,13 @@ if ($simpan) {
     // Jika berhasil, munculkan pesan sukses dan kembali ke halaman form
     echo "<script>
             alert('Pesan berhasil dikirim!');
-            window.location.href = 'contact_us.html';
+            window.location.href = 'contact_us.php';
           </script>";
 } else {
     // Jika gagal, munculkan pesan error
     echo "<script>
             alert('Gagal mengirim pesan!');
-            window.location.href = 'contact_us.html';
+            window.location.href = 'contact_us.php';
           </script>";
 }
 ?>
