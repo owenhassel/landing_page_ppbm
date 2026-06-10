@@ -1,3 +1,4 @@
+<?php include 'db.php'; ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -68,48 +69,40 @@
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-4 text-danger serif"><strong>Latest News</strong></h2>
             </div>
-            
-            <div class="row align-items-center g-4 mb-4" data-aos="fade-right" data-aos-duration="1000">
-                <div class="col-md-2 text-center">
-                    <img src="Image/Kelas EWDW.png" class="img-fluid shadow rounded-5" alt="Kelas EWDW">
-                </div>
-                <div class="col-md-10">
-                    <div class="p-4 border bg-white card-custom h-100 shadow-sm">
-                        <h5 class="fw-bold">
-                            <a href="https://machung.ac.id/berita/kelas-kolaboratif-internasional-bersama-mahasiswa-polandia/" class="text-decoration-none text-dark">Kelas Kolaboratif Internasional Bersama Mahasiswa EWDW</a>
-                        </h5>
-                        <p class="text-secondary mb-0">Universitas Ma Chung terus mendorong mahasiswanya untuk memiliki pengalaman global melalui berbagai program kolaborasi internasional. Salah satu upaya tersebut diwujudkan melalui kelas kolaboratif internasional bersama mahasiswa dari State University of Applied Sciences in Krosno, Polandia.</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row align-items-center g-4 mb-4" data-aos="fade-left" data-aos-duration="1000">
+            <?php
+            $query = mysqli_query($conn, "SELECT * FROM berita ORDER BY date DESC");
+            $nomor = 0;
+            if (mysqli_num_rows($query) > 0):
+                while ($berita = mysqli_fetch_assoc($query)):
+                    $animasi = ($nomor % 2 == 0) ? 'fade-right' : 'fade-left';
+                    $nomor++;
+            ?>
+            <div class="row align-items-center g-4 mb-4" data-aos="<?= $animasi ?>" data-aos-duration="1000">
                 <div class="col-md-2 text-center">
-                    <img src="Image/Atlet Whusu.png" class="img-fluid shadow rounded-5" alt="Atlet Wushu">
+                    <img src="Image/<?= htmlspecialchars($berita['gambar']) ?>" class="img-fluid shadow rounded-5" alt="<?= htmlspecialchars($berita['judul']) ?>">
                 </div>
                 <div class="col-md-10">
                     <div class="p-4 border bg-white card-custom h-100 shadow-sm">
                         <h5 class="fw-bold">
-                            <a href="https://machung.ac.id/berita/atlet-wushu-ma-chung-borong-prestasi-dua-kejuaraan/" class="text-decoration-none text-dark">Atlet Wushu Ma Chung Borong Prestasi Dua Kejuaraan</a>
+                            <span class="text-dark"><?= htmlspecialchars($berita['judul']) ?></span>
                         </h5>
-                        <p class="text-secondary mb-0">Universitas Ma Chung patut berbangga hati karena memiliki atlet wushu yang berulang kali menorehkan prestasi membanggakan. Samuel Enrico Jose Fernando, mahasiswa Program Studi Mandarin for Education and Business, berhasil mengukir prestasi membanggakan melalui dua ajang kejuaraan bergengsi, yakni Cakra Buana Wushu Championship dan SLC Cup Road to Japan.</p>
+                        <p class="text-secondary mb-2"><?= htmlspecialchars($berita['deskripsi']) ?></p>
+                        <small class="text-muted">
+                            <i class="bi bi-calendar3"></i> <?= htmlspecialchars($berita['date']) ?>
+                            &nbsp;&bull;&nbsp;
+                            <i class="bi bi-person"></i> <?= htmlspecialchars($berita['penulis']) ?>
+                        </small>
                     </div>
                 </div>
             </div>
+            <?php
+                endwhile;
+            else:
+            ?>
+            <p class="text-center text-muted">Belum ada berita yang tersedia.</p>
+            <?php endif; ?>
 
-            <div class="row align-items-center g-4" data-aos="fade-right" data-aos-duration="1000">
-                <div class="col-md-2 text-center">
-                    <img src="Image/Belajar Bahasa.png" class="img-fluid shadow rounded-5" alt="Belajar Bahasa">
-                </div>
-                <div class="col-md-10">
-                    <div class="p-4 border bg-white card-custom h-100 shadow-sm">
-                        <h5 class="fw-bold">
-                            <a href="https://machung.ac.id/artikel/belajar-bahasa-menghidupi-budaya-di-prodi-mandarin-ma-chung/" class="text-decoration-none text-dark">Bahasa, Menghidupi Budaya di Prodi Mandarin Ma Chung</a>
-                        </h5>
-                        <p class="text-secondary mb-0">Belajar bahasa sering kali identik dengan menghafal kosakata dan tata bahasa. Namun, di Universitas Ma Chung, pengalaman itu terasa berbeda. Di Program Studi Mandarin for Education and Business, bahasa bukan sekadar materi, melainkan pintu masuk menuju sebuah budaya.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -167,7 +160,7 @@
             </div>
             
             <div class="text-center py-3 border-top mt-4" data-aos="fade-in" data-aos-duration="2000">
-                <small>© 2026 Universitas Ma Chung. All rights reserved.</small>
+                <small>&copy; 2026 Universitas Ma Chung. All rights reserved.</small>
             </div>
         </div>
     </footer>

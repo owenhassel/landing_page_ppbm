@@ -1,5 +1,4 @@
 <?php
-// Panggil koneksi database di baris paling atas
 include 'db.php'; 
 ?>
 <!DOCTYPE html>
@@ -119,15 +118,12 @@ include 'db.php';
 
         <div class="row g-4 mb-5">
             <?php
-            // Mengambil 4 data kegiatan terbaru dari database
             $q_kegiatan = mysqli_query($conn, "SELECT * FROM kegiatan ORDER BY waktu_kegiatan DESC LIMIT 4");
             
             if (mysqli_num_rows($q_kegiatan) > 0) {
                 $delay = 100;
                 
-                while ($row = mysqli_fetch_assoc($q_kegiatan)) {
-                    
-                    // --- Mengonversi format tanggal menjadi format Indonesia ---
+                while ($row = mysqli_fetch_assoc($q_kegiatan)) {                    
                     $bulan_indo = array (
                         1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
                         'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
@@ -253,11 +249,8 @@ include 'db.php';
             const modalPoster = document.getElementById('modalPoster');
             if (modalPoster) {
                 modalPoster.addEventListener('show.bs.modal', function (event) {
-                    // Mendapatkan elemen card yang diklik
                     const card = event.relatedTarget;
-                    // Mengambil src dari atribut data-poster
                     const imgSrc = card.getAttribute('data-poster');
-                    // Memasukkan src tersebut ke elemen img di dalam modal
                     const modalImg = modalPoster.querySelector('#gambarLengkap');
                     modalImg.src = imgSrc;
                 });
