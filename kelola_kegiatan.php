@@ -174,15 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
 
     if (sidebarToggle && sidebar) {
-        // Ketika tombol hamburger diklik
         sidebarToggle.addEventListener('click', function(e) {
             e.stopPropagation(); // Mencegah efek klik bocor ke belakang
             sidebar.classList.toggle('show-sidebar');
         });
 
-        // Fitur Tambahan: Tutup sidebar secara otomatis jika user klik di luar sidebar (area konten)
         document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) { // Hanya berlaku di HP
+            if (window.innerWidth <= 768) {
                 if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
                     sidebar.classList.remove('show-sidebar');
                 }

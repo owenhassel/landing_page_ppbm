@@ -8,9 +8,6 @@ if (!isset($_SESSION["login"])) {
 
 require 'db.php';
 
-// ==========================================
-// 1. AMBIL DATA UNTUK DITAMPILKAN
-// ==========================================
 if (isset($_GET['id_admin'])) {
     $id_admin = $_GET['id_admin'];
     
@@ -31,24 +28,18 @@ if (isset($_GET['id_admin'])) {
     exit();
 }
 
-// ==========================================
-// 2. PROSES UPDATE SAAT FORM DISUBMIT
-// ==========================================
 if (isset($_POST['btn_update'])) {
     $id_admin_lama = $_POST['id_admin_lama'];
     $id_admin_baru = htmlspecialchars($_POST['id_admin_baru']);
     $passcode_baru = $_POST['passcode_baru'];
 
-    // Jika admin mengisi password baru, update beserta passwordnya
     if (!empty($passcode_baru)) {
-        // Enkripsi password baru menggunakan MD5 agar cocok dengan login.php
         $password_hashed = md5($passcode_baru);
         
         $query_update = "UPDATE users SET id_admin = ?, passcode = ? WHERE id_admin = ?";
         $stmt_update = mysqli_prepare($conn, $query_update);
         mysqli_stmt_bind_param($stmt_update, "sss", $id_admin_baru, $password_hashed, $id_admin_lama);
     } 
-    // Jika password kosong, hanya update id_admin (username) saja
     else {
         $query_update = "UPDATE users SET id_admin = ? WHERE id_admin = ?";
         $stmt_update = mysqli_prepare($conn, $query_update);
@@ -56,7 +47,6 @@ if (isset($_POST['btn_update'])) {
     }
 
     if (mysqli_stmt_execute($stmt_update)) {
-        // Jika yang diedit adalah akun yang sedang login, update sessionnya juga
         if ($_SESSION["id_admin"] === $id_admin_lama) {
             $_SESSION["id_admin"] = $id_admin_baru;
         }

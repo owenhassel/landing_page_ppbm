@@ -201,7 +201,7 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
     line-height: 1.6;
 }
 
-/* Semester Columns */
+
 .semester-col {
     border-top: 1px solid #dee2e6;
     padding-top: 20px;
@@ -381,7 +381,7 @@ footer ul li a { color: #666; text-decoration: none; font-size: 0.9rem; margin-b
 .social-btn:hover {
     background-color: var(--machung-red);
     color: white !important;
-    transform: translateY(-5px) rotate(360deg); /* Berputar dan naik sedikit */
+    transform: translateY(-5px) rotate(360deg); 
     box-shadow: 0 5px 15px rgba(183, 28, 28, 0.3);
 }
 

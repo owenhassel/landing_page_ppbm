@@ -1,31 +1,24 @@
 <?php
-    // 1. session_start() WAJIB diletakkan di baris paling atas
     session_start();
     
-    // Hubungkan ke database
     include 'db.php';
 
-    // Jika admin sudah dalam keadaan login, langsung arahkan ke halaman admin
     if (isset($_SESSION["login"])) {
-        header("Location: admin.php"); // Sebaiknya admin.html diubah ekstensinya menjadi admin.php
+        header("Location: admin.php"); 
         exit();
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // 2. Amankan input dari serangan SQL Injection
         $id_admin = mysqli_real_escape_string($conn, $_POST["id_admin"]);
         $passcode = md5($_POST["passcode"]);
         
-        // 3. Sesuaikan nama kolom dengan database (id_admin)
         $sql = "SELECT * FROM users WHERE id_admin='$id_admin' AND passcode='$passcode'";
         $result = mysqli_query($conn, $sql);
 
-        // Jika data ditemukan (cocok)
         if(mysqli_num_rows($result) > 0) {
             $_SESSION["login"] = true;
             $_SESSION["id_admin"] = $id_admin;
 
-            // Arahkan ke dashboard admin
             header("Location: admin.php");
             exit();
         } else {
@@ -58,7 +51,6 @@
             name="id_admin"
             required
             value="<?php
-                // Jika ingin menggunakan cookie untuk mengingat ID, biarkan ini
                 if (isset($_COOKIE["userid_admin"])) {
                     echo $_COOKIE["userid_admin"];
                 }

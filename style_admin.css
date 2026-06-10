@@ -39,7 +39,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ─── SIDEBAR ───────────────────────────────── */
 .sidebar {
     position: fixed;
     top: 0; left: 0;
@@ -158,14 +157,12 @@ body {
 }
 .sb-logout:hover { background: rgba(193,32,32,0.22); border-color: rgba(193,32,32,0.4); color: #ff9999; }
 
-/* ─── MAIN ───────────────────────────────────── */
 .main {
     margin-left: var(--sidebar-w);
     padding: 26px 30px;
     min-height: 100vh;
 }
 
-/* ─── TOPBAR ─────────────────────────────────── */
 .topbar {
     display: flex;
     align-items: center;
@@ -210,7 +207,6 @@ body {
 }
 .tb-uname { font-size: 13px; font-weight: 600; }
 
-/* ─── STAT CARDS ─────────────────────────────── */
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -277,7 +273,6 @@ body {
 }
 .scard-desc { font-size: 12px; color: var(--t3); }
 
-/* ─── SECTION CARD ───────────────────────────── */
 .sec {
     background: var(--card);
     border-radius: var(--r-lg);
@@ -305,7 +300,6 @@ body {
 .sec-ttl h5 { font-size: 14.5px; font-weight: 700; margin: 0; }
 .sec-ttl small { display: block; font-size: 11.5px; color: var(--t3); margin-top: 1px; }
 
-/* ─── BUTTONS ────────────────────────────────── */
 .btn-red {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 8px 18px;
@@ -340,7 +334,6 @@ body {
 .iBtn-edit:hover { background: #EFF6FF; border-color: #BFDBFE; }
 .iBtn-del:hover  { background: #FEF2F2; border-color: #FECACA; }
 
-/* ─── TABLE ──────────────────────────────────── */
 .dtbl { width: 100%; border-collapse: collapse; }
 .dtbl thead th {
     padding: 10px 14px;
@@ -392,7 +385,6 @@ body {
     max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
-/* ─── MODAL ──────────────────────────────────── */
 .modal-content  { border: none; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.14); }
 .m-hd {
     display: flex; align-items: center; justify-content: space-between;
@@ -433,54 +425,45 @@ textarea.fi { resize: vertical; }
 .fh { font-size: 11.5px; color: var(--t3); margin-top: 5px; display: flex; align-items: center; gap: 4px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-/* ─── DROPDOWN override ──────────────────────── */
 .dropdown-menu { border: 1px solid var(--border); border-radius: var(--r); box-shadow: 0 8px 28px rgba(0,0,0,0.09); padding: 6px; }
 .dropdown-item { border-radius: var(--r-sm); font-size: 13.5px; padding: 8px 12px; color: var(--t2); }
 .dropdown-item:hover { background: var(--bg); }
 .dropdown-divider { border-color: var(--divider); margin: 4px 0; }
 
-/* ─── SCROLLBAR ──────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #D0CECA; border-radius: 10px; }
 
-/* ─── ANIMATION ──────────────────────────────── */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── RESPONSIVE & MOBILE SETTINGS ─────────────────────────────── */
 @media (max-width: 768px) {
-    /* Mengatur sidebar slide-in dengan tampilan 100% persis desktop */
     .sidebar { 
-        left: calc(var(--sidebar-w) * -1); /* Disembunyikan di luar layar */
+        left: calc(var(--sidebar-w) * -1); 
         transition: left 0.3s ease-in-out;
         box-shadow: 4px 0 20px rgba(0,0,0,0.4);
-        z-index: 9999 !important; /* Memastikan selalu di posisi teratas */
+        z-index: 9999 !important; 
         width: var(--sidebar-w) !important;
         background: var(--sidebar) !important;
     }
     
-    /* Class yang dipanggil oleh JavaScript saat tombol hamburger diklik */
     .sidebar.show-sidebar { 
         left: 0; 
     }
     
-    /* Atur ulang ukuran konten utama agar tidak memotong layar */
     .main { 
         margin-left: 0 !important; 
         padding: 16px; 
         width: 100%;
     }
     
-    /* Ubah grid statistik menjadi 2 kolom di HP */
     .stats { 
         grid-template-columns: repeat(2, 1fr); 
         gap: 12px; 
     }
     
-    /* Ubah form input (modal) menjadi 1 kolom memanjang ke bawah */
     .grid2 { 
         grid-template-columns: 1fr; 
     }

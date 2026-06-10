@@ -10,7 +10,6 @@ require 'db.php';
 if (isset($_GET['id_berita'])) {
     $id_berita = $_GET['id_berita'];
 
-    // 1. Ambil nama file gambar dari database sebelum data dihapus
     $query_gambar = "SELECT gambar FROM berita WHERE id_berita = ?";
     $stmt_gambar = mysqli_prepare($conn, $query_gambar);
     mysqli_stmt_bind_param($stmt_gambar, "s", $id_berita);
@@ -20,7 +19,6 @@ if (isset($_GET['id_berita'])) {
     if ($row = mysqli_fetch_assoc($result)) {
         $gambar_lama = $row['gambar'];
         
-        // Hapus file gambar dari folder (Sesuaikan 'uploads/' dengan folder aslimu)
         $path_gambar = "uploads/" . $gambar_lama; 
         if (file_exists($path_gambar) && is_file($path_gambar)) {
             unlink($path_gambar); 
@@ -28,7 +26,6 @@ if (isset($_GET['id_berita'])) {
     }
     mysqli_stmt_close($stmt_gambar);
 
-    // 2. Hapus data dari database
     $query_hapus = "DELETE FROM berita WHERE id_berita = ?";
     $stmt_hapus = mysqli_prepare($conn, $query_hapus);
     mysqli_stmt_bind_param($stmt_hapus, "s", $id_berita);

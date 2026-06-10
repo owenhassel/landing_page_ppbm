@@ -7,9 +7,6 @@ if (!isset($_SESSION["login"])) {
 
 require 'db.php';
 
-// ==========================================
-// 1. AMBIL DATA UNTUK DITAMPILKAN
-// ==========================================
 if (isset($_GET['id_kegiatan'])) {
     $id_kegiatan = $_GET['id_kegiatan'];
     
@@ -29,9 +26,6 @@ if (isset($_GET['id_kegiatan'])) {
     exit();
 }
 
-// ==========================================
-// 2. PROSES UPDATE SAAT FORM DISUBMIT
-// ==========================================
 if (isset($_POST['btn_update'])) {
     $id_lama = $_POST['id_kegiatan_lama'];
     $id_baru = htmlspecialchars($_POST['id_kegiatan']);
@@ -41,28 +35,21 @@ if (isset($_POST['btn_update'])) {
     $gambar_lama = $_POST['gambar_lama'];
     $gambar_baru = $_FILES['gambar']['name'];
 
-    // Jika user mengupload file gambar baru
     if ($gambar_baru != "") {
         $tmp_name = $_FILES['gambar']['tmp_name'];
-        // Sesuaikan dengan foldermu
         $direktori = "uploads/" . $gambar_baru; 
         
-        // Pindahkan file baru
         move_uploaded_file($tmp_name, $direktori);
         
-        // Hapus file lama
         if (file_exists("uploads/" . $gambar_lama) && $gambar_lama != "") {
             unlink("uploads/" . $gambar_lama);
         }
 
-        // Update Teks & Gambar
         $query_update = "UPDATE kegiatan SET id_kegiatan=?, judul=?, waktu_kegiatan=?, gambar=? WHERE id_kegiatan=?";
         $stmt_update = mysqli_prepare($conn, $query_update);
         mysqli_stmt_bind_param($stmt_update, "sssss", $id_baru, $judul, $waktu, $gambar_baru, $id_lama);
     } 
-    // Jika gambar tidak diubah
     else {
-        // Update Teks Saja
         $query_update = "UPDATE kegiatan SET id_kegiatan=?, judul=?, waktu_kegiatan=? WHERE id_kegiatan=?";
         $stmt_update = mysqli_prepare($conn, $query_update);
         mysqli_stmt_bind_param($stmt_update, "ssss", $id_baru, $judul, $waktu, $id_lama);

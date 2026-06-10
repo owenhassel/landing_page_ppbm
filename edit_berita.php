@@ -7,9 +7,6 @@ if (!isset($_SESSION["login"])) {
 
 require 'db.php';
 
-// ==========================================
-// 1. AMBIL DATA UNTUK DITAMPILKAN
-// ==========================================
 if (isset($_GET['id_berita'])) {
     $id_berita = $_GET['id_berita'];
     
@@ -29,9 +26,6 @@ if (isset($_GET['id_berita'])) {
     exit();
 }
 
-// ==========================================
-// 2. PROSES UPDATE SAAT FORM DISUBMIT
-// ==========================================
 if (isset($_POST['btn_update'])) {
     $id_lama   = $_POST['id_berita_lama'];
     $id_baru   = htmlspecialchars($_POST['id_berita']);
@@ -43,28 +37,21 @@ if (isset($_POST['btn_update'])) {
     $gambar_lama = $_POST['gambar_lama'];
     $gambar_baru = $_FILES['gambar']['name'];
 
-    // Jika user mengupload file gambar baru
     if ($gambar_baru != "") {
         $tmp_name = $_FILES['gambar']['tmp_name'];
-        // Sesuaikan dengan nama foldermu tempat menyimpan gambar
         $direktori = "uploads/" . $gambar_baru; 
         
-        // Pindahkan file baru
         move_uploaded_file($tmp_name, $direktori);
         
-        // Hapus file lama dari server
         if (file_exists("uploads/" . $gambar_lama) && $gambar_lama != "") {
             unlink("uploads/" . $gambar_lama);
         }
 
-        // Update database (Teks & Gambar Baru)
         $query_update = "UPDATE berita SET id_berita=?, judul=?, deskripsi=?, date=?, penulis=?, gambar=? WHERE id_berita=?";
         $stmt_update = mysqli_prepare($conn, $query_update);
         mysqli_stmt_bind_param($stmt_update, "sssssss", $id_baru, $judul, $deskripsi, $date, $penulis, $gambar_baru, $id_lama);
     } 
-    // Jika gambar tidak diubah
     else {
-        // Update database (Hanya Teks Saja)
         $query_update = "UPDATE berita SET id_berita=?, judul=?, deskripsi=?, date=?, penulis=? WHERE id_berita=?";
         $stmt_update = mysqli_prepare($conn, $query_update);
         mysqli_stmt_bind_param($stmt_update, "ssssss", $id_baru, $judul, $deskripsi, $date, $penulis, $id_lama);
