@@ -1,26 +1,26 @@
 <?php
-session_start();
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit();
-}
-include 'db.php';
-$current_admin = $_SESSION["id_admin"];
-$count_form    = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM form"))['total'];
-$initials = strtoupper(substr($current_admin, 0, 2));
+    session_start();
+    if (!isset($_SESSION["login"])) {
+        header("Location: login.php");
+        exit();
+    }
+    include 'db.php';
+    $current_admin = $_SESSION["id_admin"];
+    $count_form    = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM form"))['total'];
+    $initials = strtoupper(substr($current_admin, 0, 2));
 ?>
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Form — Ma Chung Mandarin</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style_admin.css">
-</head>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Form — Ma Chung Mandarin</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style_admin.css">
+    </head>
 <body>
 
 <aside class="sidebar" id="sidebar">
@@ -93,7 +93,6 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                         <th>Full Name</th>
                         <th>Kontak</th>
                         <th>Pesan</th>
-                        <th>Status</th>
                         <th style="text-align:center;">Aksi</th>
                     </tr>
                 </thead>
@@ -111,13 +110,6 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                             <div class="t-sub" style="margin-top:3px;"><i class="bi bi-telephone-fill" style="color:var(--teal);"></i><?= htmlspecialchars($r['phone']); ?></div>
                         </td>
                         <td><div class="msg-bbl"><?= htmlspecialchars($r['message']); ?></div></td>
-                        <td>
-                            <?php if (empty($r['id_admin'])): ?>
-                                <span class="pill p-ghost">Belum direspon</span>
-                            <?php else: ?>
-                                <span class="pill p-teal">✓ Sudah Direspon</span>
-                            <?php endif; ?>
-                        </td>
                         <td class="t-acts">
                             <a href="remove_form.php?id_form=<?= urlencode($r['id_form']); ?>" class="iBtn iBtn-del" title="Hapus" onclick="return confirm('Yakin ingin menghapus pesan form ini?');">
                                 <i class="bi bi-trash"></i>
@@ -141,12 +133,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (sidebarToggle && sidebar) {
         sidebarToggle.addEventListener('click', function(e) {
-            e.stopPropagation(); // Mencegah efek klik bocor ke belakang
+            e.stopPropagation();
             sidebar.classList.toggle('show-sidebar');
         });
 
         document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) { // Hanya berlaku di HP
+            if (window.innerWidth <= 768) {
                 if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
                     sidebar.classList.remove('show-sidebar');
                 }
