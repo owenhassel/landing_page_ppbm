@@ -99,7 +99,17 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                 </thead>
                 <tbody>
                 <?php
-                $q = mysqli_query($conn, "SELECT * FROM kegiatan ORDER BY waktu_kegiatan DESC");
+                
+                $limit = 10;
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $offset = ($page - 1) * $limit;
+
+                $total_data = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM kegiatan"))[0];
+                $total_page = ceil($total_data / $limit);
+                if ($total_page == 0) { $total_page = 1; }
+
+                $q = mysqli_query($conn, "SELECT * FROM kegiatan ORDER BY waktu_kegiatan DESC LIMIT $offset, $limit");
+                
                 if (mysqli_num_rows($q) > 0):
                     while ($r = mysqli_fetch_assoc($q)):
                 ?>
@@ -122,6 +132,23 @@ $initials = strtoupper(substr($current_admin, 0, 2));
                 <?php endif; ?>
                 </tbody>
             </table>
+        </div>
+        <div style="text-align: center; padding: 25px 0 10px 0;">
+            <div style="display: inline-block;">
+                <?php if($page > 1): ?>
+                    <a href="?page=<?= $page - 1 ?>" style="padding: 8px 16px; text-decoration: none; border: 1px solid #e2e8f0; margin: 0 3px; color: var(--red); background: white; border-radius: 6px; font-weight: 500; font-size: 0.9rem;">&laquo; Prev</a>
+                <?php endif; ?>
+                
+                <?php for($i = 1; $i <= $total_page; $i++): ?>
+                    <a href="?page=<?= $i ?>" style="padding: 8px 16px; text-decoration: none; border: 1px solid <?= $i == $page ? 'var(--red)' : '#e2e8f0' ?>; margin: 0 3px; background-color: <?= $i == $page ? 'var(--red)' : 'white' ?>; color: <?= $i == $page ? 'white' : '#475569' ?>; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+
+                <?php if($page < $total_page): ?>
+                    <a href="?page=<?= $page + 1 ?>" style="padding: 8px 16px; text-decoration: none; border: 1px solid #e2e8f0; margin: 0 3px; color: var(--red); background: white; border-radius: 6px; font-weight: 500; font-size: 0.9rem;">Next &raquo;</a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </main>
